@@ -45,22 +45,22 @@ header{display:flex;justify-content:center;align-items:center;padding-top:clamp(
 .rule.r3{animation-delay:.55s}
 h1,h2,p{margin:0;font-weight:inherit}
 
-.row{padding-top:clamp(10px,1.3vw,20px);padding-bottom:clamp(10px,1.3vw,20px)}
-.lead{font-weight:800;font-size:clamp(40px,7.2vw,124px);line-height:.95;letter-spacing:-.01em}
+.row{padding-top:clamp(12px,1.4vw,22px);padding-bottom:clamp(14px,1.8vw,28px)}
+.lead{font-weight:800;font-size:clamp(38px,min(6.4vw,11vh),116px);line-height:.98;letter-spacing:-.01em}
 .right{text-align:right}
 
 /* line-mask reveal */
-.mask{display:block;overflow:hidden;padding-bottom:.04em}
+.mask{display:block;overflow:hidden;padding-bottom:.08em}
 .mask>span{display:inline-block;transform:translate3d(0,110%,0);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
 
-.coming{flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end;padding-top:clamp(20px,4vw,48px)}
+.coming{flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end;padding-top:clamp(16px,2.5vw,36px)}
 .fit{width:100%;overflow:hidden}
 .coming h1{display:inline-block;white-space:nowrap;font-weight:900;font-size:16vw;line-height:.86;letter-spacing:-.015em}
 .coming .ch{display:inline-block;transform:translate3d(0,105%,0);opacity:0;animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
 .coming .sp{display:inline-block;width:.22em}
 .coming.idle h1{animation:breathe 6s ease-in-out 2.6s infinite}
 
-.tagline{text-align:center;font-weight:700;font-size:clamp(13px,1.15vw,17px);letter-spacing:.14em;padding-top:clamp(16px,2.2vw,28px);padding-bottom:max(clamp(18px,2.4vw,32px),env(safe-area-inset-bottom));opacity:0;animation:fade 1.2s ease 2.2s forwards}
+.tagline{text-align:center;font-weight:700;font-size:clamp(13px,1.15vw,17px);letter-spacing:.14em;padding-top:clamp(10px,1.4vw,20px);padding-bottom:max(clamp(14px,1.8vw,24px),env(safe-area-inset-bottom));opacity:0;animation:fade 1.2s ease 2.2s forwards}
 
 @keyframes draw{to{transform:scaleX(1)}}
 @keyframes rise{to{transform:translate3d(0,0,0);opacity:1}}
@@ -118,7 +118,7 @@ h1,h2,p{margin:0;font-weight:inherit}
     var w=h.parentNode.clientWidth;if(!w)return;
     h.style.fontSize='100px';
     var tw=h.getBoundingClientRect().width;
-    if(tw)h.style.fontSize=(100*w/tw*0.995)+'px';
+    if(!tw)return;var fs=100*w/tw*0.995;var maxH=window.innerHeight*0.30/0.86;h.style.fontSize=Math.min(fs,Math.max(maxH,60))+'px';
   }
   fit();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
