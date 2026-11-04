@@ -45,11 +45,11 @@ h1,h2,p{margin:0}
 .lead.right{text-align:right}
 .bt{max-width:9ch}
 .coming{flex:1 1 auto;display:flex;align-items:flex-end;padding-top:24px}
-.coming h1{font-weight:800;font-size:clamp(64px,16.6vw,300px);line-height:.88;letter-spacing:-.015em;white-space:nowrap;width:100%}
+.coming h1{font-weight:800;font-size:16vw;line-height:.86;letter-spacing:-.015em;white-space:nowrap;display:inline-block}
+.coming .fit{width:100%;overflow:hidden}
 footer{text-align:center;font-size:13px;letter-spacing:.06em;padding:clamp(18px,3vw,36px) 16px clamp(18px,2.4vw,28px)}
 
 @media (max-width:600px){
-  .coming h1{white-space:normal}
   .bg-haze{animation-duration:18s}
 }
 @media (prefers-reduced-motion:reduce){
@@ -72,10 +72,25 @@ footer{text-align:center;font-size:13px;letter-spacing:.06em;padding:clamp(18px,
   <hr>
   <section class="pad"><h2 class="lead right">Faster &amp; Better</h2></section>
   <hr>
-  <section class="coming pad"><h1>Coming Soon</h1></section>
+  <section class="coming pad"><div class="fit"><h1 id="cs">Coming Soon</h1></div></section>
   <footer>Owned by Parth Paliwal</footer>
 </div>
 
+<script>
+(function(){
+  var h=document.getElementById('cs');
+  function fit(){
+    var w=h.parentNode.clientWidth;if(!w)return;
+    h.style.fontSize='100px';
+    var tw=h.getBoundingClientRect().width;
+    h.style.fontSize=(100*w/tw*0.995)+'px';
+  }
+  fit();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  window.addEventListener('resize',fit);
+  window.addEventListener('orientationchange',fit);
+})();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js"></script>
 <script>
 (function(){
