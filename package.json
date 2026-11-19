@@ -1,0 +1,27 @@
+{
+  "name": "thereforetech-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Therefore Tech website (thereforetech.com). Static site built with Eleventy, hosted on GitHub Pages.",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf _site",
+    "dev": "npm run clean && INCLUDE_DEV_PAGES=1 eleventy --serve --port=8080",
+    "build": "npm run clean && ELEVENTY_ENV=production eleventy",
+    "build:dev": "npm run clean && eleventy",
+    "build:preview": "npm run clean && ELEVENTY_ENV=production INCLUDE_DEV_PAGES=1 eleventy",
+    "fonts": "./scripts/subset-fonts.sh",
+    "lint:copy": "node scripts/copy-lint.js",
+    "lint:html": "html-validate \"_site/**/*.html\"",
+    "test": "npm run build && npm run lint:copy && npm run lint:html"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.8",
+    "@fontsource-variable/newsreader": "5.3.0",
+    "@fontsource-variable/roboto-condensed": "5.3.0",
+    "html-validate": "11.21.1"
+  }
+}

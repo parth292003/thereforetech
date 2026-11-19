@@ -1,0 +1,78 @@
+/* Layout: container, grid, rules, header, footer. Uses tokens only. */
+
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+.section { padding-block: var(--space-section); }
+
+/* Drawn rules carried over from the coming-soon page */
+.rule { height: var(--rule-width); background: var(--color-rule); border: 0; margin: 0; }
+
+/* ---- Header ---- */
+.site-header { position: relative; z-index: var(--z-header); }
+.site-header__bar {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-5);
+  min-height: var(--space-9);
+  padding-top: max(var(--space-4), env(safe-area-inset-top));
+  padding-bottom: var(--space-4);
+}
+.wordmark {
+  display: inline-flex; align-items: center; min-height: var(--target-min);
+  font-family: var(--font-label); font-weight: 700; font-size: var(--text-small);
+  letter-spacing: var(--tracking-wordmark); text-transform: uppercase;
+  color: var(--color-ink); text-decoration: none;
+}
+.site-nav__list { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-5); margin: 0; padding: 0; list-style: none; }
+.site-nav__link {
+  display: inline-flex; align-items: center; min-height: var(--target-min);
+  font-family: var(--font-label); font-weight: 600; font-size: var(--text-label);
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--color-ink); text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 calc(100% - 0.7rem) / 0 1px no-repeat;
+  transition: background-size var(--dur-feedback) var(--ease-out);
+}
+.site-nav__link:hover, .site-nav__link[aria-current="page"] { background-size: 100% 1px; }
+.menu-toggle { display: none; }
+
+/* Compact width with JS: nav collapses behind a menu button. Without JS the links simply wrap. */
+@media (max-width: 1023.98px) {
+  .js .menu-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: var(--target-min); min-height: var(--target-min); padding: 0 var(--space-3);
+    background: none; border: var(--rule-width) solid var(--color-ink); cursor: pointer;
+    font-family: var(--font-label); font-weight: 600; font-size: var(--text-label);
+    letter-spacing: var(--tracking-label); text-transform: uppercase;
+  }
+  .js .site-nav { display: none; padding-bottom: var(--space-5); }
+  .js .site-nav[data-open] { display: block; }
+  .js .site-nav__list { flex-direction: column; align-items: flex-start; gap: var(--space-1); }
+  .js .site-nav__link { font-size: var(--text-title-3); font-family: var(--font-serif); font-weight: 400; letter-spacing: 0; text-transform: none; }
+  .site-header__bar { flex-wrap: wrap; }
+}
+@media (min-width: 1024px) {
+  .site-header__bar { flex-wrap: nowrap; }
+}
+
+/* ---- Footer ---- */
+.site-footer { padding-block: var(--space-8) max(var(--space-7), env(safe-area-inset-bottom)); }
+.site-footer__inner { display: grid; gap: var(--space-6); padding-top: var(--space-6); }
+.site-footer__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--space-5); margin: 0; padding: 0; list-style: none; }
+.site-footer__list a { display: inline-flex; align-items: center; min-height: var(--target-min); color: var(--color-ink); }
+.site-footer__meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); color: var(--color-ink-muted); }
+@media (min-width: 768px) {
+  .site-footer__inner { grid-template-columns: 1fr 2fr; }
+  .site-footer__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .site-footer__meta { grid-column: 1 / -1; }
+}
+
+/* ---- Shared rows ---- */
+.shell-sub { margin-top: var(--space-6); }
+.cta-row { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-7); }

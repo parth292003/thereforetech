@@ -1,0 +1,15 @@
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="wordmark" href="/" aria-label="Therefore Tech, home">Therefore Tech</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="site-nav__list" role="list">
+        {%- for item in nav.primary %}
+        <li><a class="site-nav__link" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+        <li><a class="btn btn--primary" href="{{ site.bookingUrl or nav.cta.url }}">{{ nav.cta.label }}</a></li>
+      </ul>
+    </nav>
+  </div>
+  <hr class="rule">
+</header>

@@ -1,0 +1,17 @@
+/* Dev-only specimen styles (/dev/tokens/). Not shipped in production builds. */
+.specimen__heading { margin-top: var(--space-9); margin-bottom: var(--space-5); font-size: var(--text-title-2); }
+.specimen > * + * { margin-top: var(--space-5); }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: var(--space-5); padding: 0; list-style: none; }
+.swatches li { display: grid; gap: var(--space-1); }
+.swatch { display: block; aspect-ratio: 4 / 3; border: var(--rule-width) solid var(--color-rule); margin-bottom: var(--space-2); }
+.swatch--bg { background: var(--color-bg); }
+.swatch--ink { background: var(--color-ink); }
+.swatch--muted { background: var(--color-ink-muted); }
+.swatch--accent { background: var(--color-accent); }
+.swatch--accent-text { background: var(--color-accent-text); }
+.swatch--rose { background: var(--color-rose); }
+.swatch--sage { background: var(--color-sage); }
+.specimen-grid span { display: block; height: var(--space-9); background: var(--color-rose); }
+.specimen-grid span:nth-child(n + 5) { display: none; }
+@media (min-width: 768px) { .specimen-grid span:nth-child(n + 5) { display: block; } .specimen-grid span:nth-child(n + 9) { display: none; } }
+@media (min-width: 1280px) { .specimen-grid span:nth-child(n + 9) { display: block; } }

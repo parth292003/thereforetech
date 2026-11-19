@@ -1,0 +1,136 @@
+/* =========================================================================
+   Therefore Tech — design tokens. Source of truth: docs/PLAN.md §4A.
+   No raw colours, font sizes, spacing or durations outside this file.
+   ========================================================================= */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/assets/fonts/newsreader.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("/assets/fonts/newsreader-italic.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("/assets/fonts/roboto-condensed.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Metric-matched fallbacks keep layout shift low while web fonts load. */
+@font-face {
+  font-family: "Newsreader Fallback";
+  src: local("Georgia"), local("Times New Roman");
+  size-adjust: 96%;
+  ascent-override: 92%;
+  descent-override: 24%;
+}
+@font-face {
+  font-family: "Roboto Condensed Fallback";
+  src: local("Arial Narrow"), local("Arial");
+  size-adjust: 88%;
+}
+
+:root {
+  /* ---- Colour: Palette A "Field" (§4A.2). Ratios are against --color-bg. ---- */
+  --color-bg: #F3EEE4;          /* bone */
+  --color-ink: #1C1A16;         /* soil, 15.03:1 */
+  --color-ink-muted: #5C574D;   /* 6.21:1 */
+  --color-accent: #B08A3E;      /* ochre. FILLS ONLY (2.77:1 as text). Ink on ochre 5.42:1 */
+  --color-accent-text: #7A5C22; /* deep ochre, links, 5.37:1 */
+  --color-rose: #E8CFC4;        /* dusk rose surface, ink on rose 11.71:1 */
+  --color-sage: #7E8468;        /* decorative lines only, 3.37:1 */
+  --color-sage-text: #5A604A;   /* 5.66:1 */
+  --color-rule: rgb(28 26 22 / 0.8);
+  --color-focus: var(--color-accent);
+
+  /* ---- Type families (§4A.3) ---- */
+  --font-serif: "Newsreader", "Newsreader Fallback", Georgia, "Times New Roman", serif;
+  --font-label: "Roboto Condensed", "Roboto Condensed Fallback", "Arial Narrow", Arial, sans-serif;
+
+  /* ---- Type scale: HIG Large (default) anchors at 360px, fluid to 1440px ---- */
+  --text-display: clamp(2.5rem, 1.5rem + 4.4444vw, 5.5rem);
+  --text-title-1: clamp(2.125rem, 1.6667rem + 2.037vw, 3.5rem);
+  --text-title-2: clamp(1.75rem, 1.5rem + 1.1111vw, 2.5rem);
+  --text-title-3: clamp(1.375rem, 1.25rem + 0.5556vw, 1.75rem);
+  --text-lead: clamp(1.25rem, 1.1667rem + 0.3704vw, 1.5rem);
+  --text-body: clamp(1.0625rem, 1.0208rem + 0.1852vw, 1.1875rem);
+  --text-small: clamp(0.9375rem, 0.9167rem + 0.0926vw, 1rem);
+  --text-label: clamp(0.8125rem, 0.7917rem + 0.0926vw, 0.875rem);
+  --text-caption: clamp(0.75rem, 0.7292rem + 0.0926vw, 0.8125rem);
+
+  --leading-display: 1.05;
+  --leading-title: 1.12;
+  --leading-title-3: 1.25;
+  --leading-lead: 1.45;
+  --leading-body: 1.55;
+  --leading-label: 1.3;
+
+  --tracking-label: 0.08em;
+  --tracking-wordmark: 0.03em;
+  --measure: 66ch;
+
+  /* ---- Spacing: 4px base (judgment, §4A.3) ---- */
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+  --space-10: 8rem;    /* 128 */
+  --space-11: 12rem;   /* 192 */
+  --space-section: clamp(6rem, 14vw, 12rem);
+  --gutter: clamp(1rem, 2.4vw, 2.75rem);
+
+  /* ---- Grid (§4A.4): compact 4 / regular 8 / wide 12 columns ---- */
+  --grid-columns: 4;
+  --grid-gap: 1rem;
+  --content-max: 90rem; /* 1440 */
+
+  /* ---- Targets (§4A.1) ---- */
+  --target-min: 2.75rem; /* 44 */
+  --focus-ring: 3px solid var(--color-focus);
+  --focus-offset: 3px;
+  --rule-width: 1px;
+
+  /* ---- Motion (§4A.5, judgment) ---- */
+  --dur-feedback: 160ms;
+  --dur-ui: 280ms;
+  --dur-fade: 600ms;
+  --dur-reveal: 900ms;
+  --dur-signature: 2400ms;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --stagger: 80ms;
+
+  /* ---- Layers ---- */
+  --z-media: -1;
+  --z-header: 10;
+  --z-skip: 100;
+}
+
+@media (min-width: 768px) {
+  :root { --grid-columns: 8; --grid-gap: 1.5rem; }
+}
+@media (min-width: 1280px) {
+  :root { --grid-columns: 12; --grid-gap: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-reveal: 200ms;   /* translate reveals become short fades */
+    --dur-fade: 200ms;
+    --dur-signature: 0ms;
+    --stagger: 0ms;
+  }
+}

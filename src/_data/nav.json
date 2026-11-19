@@ -1,0 +1,21 @@
+{
+  "primary": [
+    { "label": "Transform", "url": "/transform/" },
+    { "label": "Discover", "url": "/discover/" },
+    { "label": "How we work", "url": "/how-we-work/" },
+    { "label": "Work", "url": "/work/" },
+    { "label": "Insights", "url": "/insights/" },
+    { "label": "About", "url": "/about/" }
+  ],
+  "cta": { "label": "Book a founder conversation", "url": "/contact/" },
+  "footer": [
+    { "label": "Transform", "url": "/transform/" },
+    { "label": "Discover", "url": "/discover/" },
+    { "label": "How we work", "url": "/how-we-work/" },
+    { "label": "Operational resilience", "url": "/operational-resilience/" },
+    { "label": "Work", "url": "/work/" },
+    { "label": "Insights", "url": "/insights/" },
+    { "label": "About", "url": "/about/" },
+    { "label": "Contact", "url": "/contact/" }
+  ]
+}

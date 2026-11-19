@@ -1,0 +1,10 @@
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": site.url + "/#organization",
+  "name": site.name,
+  "url": site.url + "/",
+  "description": site.description,
+  "founder": { "@type": "Person", "@id": site.url + "/about/#parth-paliwal", "name": site.founder },
+  "sameAs": ([site.linkedin] if site.linkedin else [])
+} | json | safe }}</script>

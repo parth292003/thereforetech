@@ -1,0 +1,29 @@
+# CI for the Therefore Tech site (docs/PLAN.md §8, Phase 1).
+# Build, copy lint (incl. NDA blocklist from the NDA_BLOCKLIST secret) and HTML validation.
+# Deployment to GitHub Pages is added in Phase 10; until then the live site is untouched.
+name: CI
+
+on:
+  push:
+    branches: [rebuild, main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Copy lint (brand, buzzwords, NDA)
+        run: npm run lint:copy
+        env:
+          NDA_BLOCKLIST: ${{ secrets.NDA_BLOCKLIST }}
+      - run: npm run lint:html

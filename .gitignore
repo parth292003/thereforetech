@@ -1,0 +1,6 @@
+node_modules/
+_site/
+.DS_Store
+.lighthouseci/
+# NDA blocklist: never committed (docs/PLAN.md §0). CI reads it from the NDA_BLOCKLIST secret.
+.nda-blocklist

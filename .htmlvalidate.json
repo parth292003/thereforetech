@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "html-validate:recommended",
+    "html-validate:a11y"
+  ],
+  "rules": {
+    "no-inline-style": "error",
+    "long-title": [
+      "error",
+      {
+        "maxlength": 60
+      }
+    ],
+    "require-sri": "off",
+    "doctype-style": "off",
+    "no-redundant-role": "off"
+  }
+}
