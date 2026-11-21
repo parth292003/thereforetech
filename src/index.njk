@@ -137,6 +137,8 @@ preloads:
   </div>
 </section>
 
+{#- Held off the live site until approved (site.holdUnfinishedHome); local dev and preview still show them. -#}
+{%- if showDraftMarks or not site.holdUnfinishedHome %}
 {# ================= 7. Selected work ================= #}
 <section class="home-section" aria-labelledby="work-title">
   <div class="container grid home-section__head">
@@ -177,6 +179,7 @@ preloads:
     {%- endfor %}
   </div>
 </section>
+{%- endif %}
 
 {# ================= 9. Founder note (launch blocker) ================= #}
 {%- if home.founderNote.text or showDraftMarks %}
@@ -192,6 +195,7 @@ preloads:
 </section>
 {%- endif %}
 
+{%- if showDraftMarks or not site.holdUnfinishedHome %}{# the form is not connected yet #}
 {# ================= 10. Contact ================= #}
 <section class="home-section contact" aria-labelledby="contact-title">
   <div class="container grid contact__inner">
@@ -211,3 +215,4 @@ preloads:
     </form>
   </div>
 </section>
+{%- endif %}

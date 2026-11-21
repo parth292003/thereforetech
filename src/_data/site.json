@@ -11,6 +11,7 @@
   "email": null,
   "bookingUrl": null,
   "lockInnerPages": true,
+  "holdUnfinishedHome": true,
   "ogImageDefault": "/media/og/default.jpg",
   "themeColor": "#FFFFFF"
 }

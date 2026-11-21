@@ -39,7 +39,14 @@ if (process.argv.includes("--html")) {
       .replace(/&#39;|&#x27;|&apos;|&rsquo;/g, "'")
       .replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&nbsp;/g, " ")
       .replace(/\s+/g, " ");
-    for (const line of approved) if (!text.includes(line)) problems.push(`html: approved line not on the homepage: "${line}"`);
+    // Sections held off the live site (site.holdUnfinishedHome: work, engagement models, contact) are absent from
+    // the production homepage on purpose; their lines are still checked in the data above.
+    const held = new Set();
+    if (read("src/_data/site.json").holdUnfinishedHome && !text.includes("Selected work")) {
+      const home = read("src/_data/home.json");
+      [home.work, home.contact, read("src/_data/engagementModels.json")].forEach((v) => strings(v, held));
+    }
+    for (const line of approved) if (!held.has(line) && !text.includes(line)) problems.push(`html: approved line not on the homepage: "${line}"`);
   }
 }
 
