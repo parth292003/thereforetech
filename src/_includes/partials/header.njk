@@ -1,4 +1,4 @@
-<header class="site-header">
+<header class="site-header{% if headerOverlay %} site-header--overlay{% endif %}">
   <div class="container site-header__bar">
     <a class="wordmark" href="/" aria-label="Therefore Tech, home">Therefore Tech</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -11,5 +11,9 @@
       </ul>
     </nav>
   </div>
+  {%- if headerOverlay %}
+  <svg class="hero__line" data-hero-line viewBox="0 0 1600 200" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0 100 L1600 100"></path></svg>
+  {%- else %}
   <hr class="rule">
+  {%- endif %}
 </header>

@@ -13,7 +13,9 @@
     "fonts": "./scripts/subset-fonts.sh",
     "lint:copy": "node scripts/copy-lint.js",
     "lint:html": "html-validate \"_site/**/*.html\"",
-    "test": "npm run build && npm run lint:copy && npm run lint:html"
+    "test": "npm run build && npm run lint:copy && npm run lint:html && npm run check:copy",
+    "check:copy": "node scripts/check-copy.js --html",
+    "check:launch": "node scripts/launch-check.js"
   },
   "engines": {
     "node": ">=20"
@@ -22,6 +24,7 @@
     "@11ty/eleventy": "3.1.8",
     "@fontsource-variable/newsreader": "5.3.0",
     "@fontsource-variable/roboto-condensed": "5.3.0",
-    "html-validate": "11.21.1"
+    "html-validate": "11.21.1",
+    "three": "^0.175.0"
   }
 }

@@ -17,6 +17,6 @@ instance() { # src dest wght-range
 }
 instance "$NR/newsreader-latin-wght-normal.woff2"        "$OUT/newsreader.woff2"        400:600
 instance "$NR/newsreader-latin-wght-italic.woff2"        "$OUT/newsreader-italic.woff2" 400:500
-instance "$RC/roboto-condensed-latin-wght-normal.woff2"  "$OUT/roboto-condensed.woff2"  400:700
+instance "$RC/roboto-condensed-latin-wght-normal.woff2"  "$OUT/roboto-condensed.woff2"  400:900
 rm -rf "$TMP"
 ls -la "$OUT"

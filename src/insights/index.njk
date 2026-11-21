@@ -1,0 +1,19 @@
+---
+layout: layouts/page.njk
+copyStatus: draft
+title: "Insights for founders | Therefore Tech"
+description: "Short, practical writing for founders from Therefore Tech on transforming how a business works and finding what comes next."
+eyebrow: "Insights"
+h1: "Insights"
+intro: "Short, practical writing for founders on how businesses work, and what they could become."
+---
+{%- set articles = (collections.insight or []) | reverse %}
+{%- if articles.length %}
+<ul role="list">
+{%- for a in articles %}
+  <li><a href="{{ a.url }}">{{ a.data.h1 }}</a></li>
+{%- endfor %}
+</ul>
+{%- else %}
+<p>The first articles are on their way.</p>
+{%- endif %}

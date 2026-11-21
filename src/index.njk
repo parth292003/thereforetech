@@ -2,18 +2,212 @@
 layout: layouts/base.njk
 title: "Innovation partner for founders | Therefore Tech"
 description: "Therefore Tech is the innovation arm for founders. We rethink how your business works, and build what comes next."
-targetPhrase: "innovation partner for founders"
-h1: "We rethink how your business works. And build what comes next."
+h1: "We rethink how your business works, and build what comes next."
 schema: ["organization", "website"]
+pageCss: "home.css"
+headerOverlay: true
+bodyClass: "page-home"
+pageScripts: ["hero.js", "scroll-scene.js", "cloud-text.js", "steps-story.js", "wwd-art.js"]
+preloads:
+  - { href: "/media/hero/poster-mobile.webp", as: "image", type: "image/webp", media: "(max-width: 767px)" }
+  - { href: "/media/hero/poster.webp", as: "image", type: "image/webp", media: "(min-width: 768px)" }
 ---
-{#- Phase 1 shell. The full homepage (10 sections) is built in Phase 3. -#}
-<section class="section">
-  <div class="container">
-    <h1>{{ h1 }}</h1>
-    <p class="t-lead prose shell-sub">We partner directly with ambitious founders to transform operations, discover new opportunities, and engineer the solutions that bring them to life.</p>
-    <p class="cta-row">
-      <a class="btn btn--primary" href="{{ site.bookingUrl or '/contact/' }}">Book a founder conversation</a>
-      <a class="btn btn--secondary" href="/work/">See our work</a>
+{#- Homepage (PLAN §4). Copy: src/_data/home.json. Motion: hero.js, scroll-scene.js, site.js (reveals). -#}
+
+{# ================= 1. Hero ================= #}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__media" aria-hidden="true">
+    <picture>
+      <source media="(max-width: 767px)" srcset="/media/hero/poster-mobile.webp" type="image/webp">
+      <source srcset="/media/hero/poster.webp" type="image/webp">
+      <img class="hero__poster" src="/media/hero/poster.jpg" alt="" width="1600" height="842" fetchpriority="high">
+    </picture>
+    <video class="hero__video" muted loop playsinline preload="none" tabindex="-1"
+      data-hero-video
+      data-desktop-webm="/media/hero/desktop.webm" data-desktop-mp4="/media/hero/desktop.mp4"
+      data-mobile-webm="/media/hero/mobile.webm" data-mobile-mp4="/media/hero/mobile.mp4"></video>
+  </div>
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="container grid hero__content">
+    <h1 id="hero-title" class="hero__title">
+      {%- for line in home.hero.h1Lines %}
+      <span class="hero__title-line">{{ line }}</span>
+      {%- endfor %}
+    </h1>
+    {%- set founderParts = home.hero.sub | split("ambitious founders") %}
+    <p class="hero__sub t-lead">{{ founderParts[0] }}<strong>ambitious founders</strong>{{ founderParts[1] }}</p>
+    <p class="hero__ctas cta-row">
+      <a class="btn btn--primary" href="{{ site.bookingUrl or home.hero.ctaPrimary.url }}">{{ home.hero.ctaPrimary.label }}</a>
+      <a class="btn btn--secondary" href="{{ home.hero.ctaSecondary.url }}">{{ home.hero.ctaSecondary.label }}</a>
     </p>
+  </div>
+</section>
+
+{# ================= 2. Stance: one scroll-driven sequence (line → leaf; report → outcome) ================= #}
+<section class="scene scene--stance" id="our-stance" data-scene="stance" data-clip data-lead="0.35" data-clip-from="0.06" data-clip-to="0.9" data-clip-end="0.88" aria-labelledby="stance-title">
+  <div class="scene__stage">
+    <div class="container grid stance__text">
+      <h2 id="stance-title" class="stance__heading">{{ home.transition1.heading }}</h2>
+      {%- set parts = home.transition1.text | split(". ") %}
+      <p class="stance__report" data-stance-report>{{ parts[0] }}.</p>
+      {%- set cloudParts = parts[1] | split(" outcome ") %}
+      <p class="stance__outcome cloud-text" data-stance-outcome data-cloud-text><strong class="cloud-text__words"><span class="cloud-text__line">{{ cloudParts[0] }}</span> <span class="cloud-text__line">outcome</span> <span class="cloud-text__line">{{ cloudParts[1] }}</span></strong><canvas class="cloud-text__canvas" aria-hidden="true"></canvas></p>
+    </div>
+    {%- set clip = "/media/scenes/transition-1/" %}{# Parth 2026-11-21: back to the first leaf and its shadow #}
+    <div class="scene__media" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 767px)" srcset="{{ clip }}poster-mobile.avif" type="image/avif">
+        <source media="(max-width: 767px)" srcset="{{ clip }}poster-mobile.webp" type="image/webp">
+        <source srcset="{{ clip }}poster.avif" type="image/avif">
+        <source srcset="{{ clip }}poster.webp" type="image/webp">
+        <img class="scene__poster" src="{{ clip }}poster.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      </picture>
+      <video class="scene__video" muted playsinline preload="none" tabindex="-1" data-scrub
+        data-desktop-webm="{{ clip }}desktop.webm" data-desktop-mp4="{{ clip }}desktop.mp4"
+        data-mobile-webm="{{ clip }}mobile.webm" data-mobile-mp4="{{ clip }}mobile.mp4"></video>
+    </div>
+  </div>
+</section>
+
+{# ================= 3. What we do ================= #}
+<section class="home-section wwd-pin" aria-labelledby="what-title">{# wwd-art.js pins this on wide screens: the river clears, then the path draws #}
+  <div class="wwd-pin__stage">
+  <div class="container grid home-section__head">
+    <hr class="rule" data-reveal="rule">
+    <h2 id="what-title" class="section-label t-label">{{ home.whatWeDo.label }}{% if home.whatWeDo.status == "draft" and showDraftMarks %} <span class="draft-tag">Draft</span>{% endif %}</h2>
+  </div>
+  <div class="container grid wwd">
+    {%- for p in home.whatWeDo.panels %}
+    {%- set words = p.title.split(" ") %}
+    <article class="wwd__col wwd__col--{{ loop.index }}" aria-labelledby="wwd-title-{{ loop.index }}">
+      <p class="wwd__num t-label" aria-hidden="true">0{{ loop.index }}</p>
+      <h3 id="wwd-title-{{ loop.index }}" class="wwd__title"><span class="wwd__line">{{ words[0] }}</span> <span class="wwd__line">{{ words.slice(1).join(" ") }}</span></h3>
+      <p class="wwd__body t-lead">{{ p.body }}</p>
+      <a class="link-arrow wwd__link" href="{{ p.url }}">{{ p.linkLabel }}</a>
+      <div class="wwd__art" data-art="{{ 'stream' if loop.first else 'path' }}" aria-hidden="true"></div>{# drawn by wwd-art.js #}
+    </article>
+    {%- endfor %}
+  </div>
+  </div>
+</section>
+
+{# ================= 4. Philosophy ================= #}
+<section class="philosophy" aria-label="What we believe">
+  <div class="container grid">
+    <p class="philosophy__text t-display" data-reveal="mask">{{ home.philosophy.text }}</p>
+  </div>
+</section>
+
+{# ================= 5. Transition 2 + How we work ================= #}
+<section aria-labelledby="how-title">
+  <div class="scene scene--scrub scene--flock" data-scene="branches-to-flock" data-mode="scrub" data-fold>
+    <div class="scene__stage">
+      <svg class="scene__art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg>
+      <div class="container scene__text">
+        <h2 id="how-title" class="scene__line t-mega cloud-text" data-at="0.6" data-cloud-text="sky"><span class="cloud-text__words">{% for w in home.howWeWork.label.split(" ") %}<span class="cloud-text__word">{{ w }}</span>{% if not loop.last %} {% endif %}{% endfor %}</span><canvas class="cloud-text__canvas" aria-hidden="true"></canvas></h2>
+      </div>
+      <span class="scene__progress" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="home-section">
+    <div class="container">
+    <ol class="grid steps" role="list">
+      {%- for step in home.howWeWork.steps %}
+      <li class="step" data-reveal data-i="{{ loop.index0 }}">
+        <span class="step__num t-label">Step {{ loop.index }}</span>
+        <h3 class="step__title">{{ step.title }}</h3>
+        <p>{{ step.body }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+    </div>
+  </div>
+</section>
+
+{# ================= 6. Built for a moving frontier ================= #}
+<section class="frontier scene scene--play" data-scene="frontier" data-mode="play" aria-labelledby="frontier-title">
+  <div class="container grid frontier__inner">
+    <div class="frontier__text">
+      <h2 id="frontier-title" class="frontier__title cloud-text" data-reveal="mask" data-cloud-text="fluid"><span class="cloud-text__words">{% for w in home.frontier.title.split(" ") %}<span class="cloud-text__word">{{ w }}</span>{% if not loop.last %} {% endif %}{% endfor %}</span><canvas class="cloud-text__canvas" aria-hidden="true"></canvas></h2>
+      <p class="t-lead" data-reveal>{{ home.frontier.text }}</p>
+    </div>
+    <div class="frontier__art">
+      <svg viewBox="0 0 800 800" aria-hidden="true" focusable="false" data-scene-art></svg>
+    </div>
+  </div>
+</section>
+
+{# ================= 7. Selected work ================= #}
+<section class="home-section" aria-labelledby="work-title">
+  <div class="container grid home-section__head">
+    <hr class="rule" data-reveal="rule">
+    <h2 id="work-title" class="section-label t-label">{{ home.work.label }}</h2>
+  </div>
+  <div class="container">
+    <ul class="work-list" role="list">
+      {%- for item in home.work.items %}
+      {%- if not item.heldBackUntilConfirmed or showDraftMarks %}
+      <li class="work-item" data-reveal>
+        <a class="work-item__link" href="{{ item.url }}">
+          <span class="work-item__kind t-label">{{ item.kind }}{% if (item.status == "draft" or item.titleStatus == "draft") and showDraftMarks %} <span class="draft-tag">Draft</span>{% endif %}</span>
+          <span class="work-item__title t-condensed">{{ item.title }}</span>
+          <span class="work-item__body">{{ item.body }}</span>
+          <span class="work-item__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+    <p class="work-more"><a class="link-arrow" href="/work/">See all work</a></p>
+  </div>
+</section>
+
+{# ================= 8. Engagement models (DRAFT) ================= #}
+<section class="home-section" aria-labelledby="models-title">
+  <div class="container grid home-section__head">
+    <hr class="rule" data-reveal="rule">
+    <h2 id="models-title" class="section-label t-label">{{ engagementModels.label }}{% if showDraftMarks %} <span class="draft-tag">Draft</span>{% endif %}</h2>
+  </div>
+  <div class="container grid models">
+    {%- for m in engagementModels.models %}
+    <article class="model" data-reveal data-i="{{ loop.index0 }}">
+      <h3 class="model__name">{{ m.name }}</h3>
+      <p>{{ m.body }}</p>
+    </article>
+    {%- endfor %}
+  </div>
+</section>
+
+{# ================= 9. Founder note (launch blocker) ================= #}
+{%- if home.founderNote.text or showDraftMarks %}
+<section class="home-section" aria-label="A note from the founder">
+  <div class="container grid founder-note">
+    {%- if home.founderNote.text %}
+    <p class="t-lead" data-reveal>{{ home.founderNote.text }}</p>
+    {%- else %}
+    <p class="placeholder">Founder note: launch blocker. Parth's paragraph goes here.</p>
+    {%- endif %}
+    <p class="t-label">{{ home.founderNote.signature }}</p>
+  </div>
+</section>
+{%- endif %}
+
+{# ================= 10. Contact ================= #}
+<section class="home-section contact" aria-labelledby="contact-title">
+  <div class="container grid contact__inner">
+    <h2 id="contact-title" class="contact__title" data-reveal="mask">{{ home.contact.title }}</h2>
+    <form class="contact-form" action="/contact/" method="get" data-reveal>
+      {%- for f in home.contact.fields %}
+      <p class="field">
+        <label for="home-{{ f.name }}">{{ f.label }}{% if f.status == "draft" and showDraftMarks %} <span class="draft-tag">Draft</span>{% endif %}</label>
+        <input id="home-{{ f.name }}" name="{{ f.name }}" type="{{ f.type }}" autocomplete="{{ f.autocomplete }}"{% if f.required %} required{% endif %}>
+      </p>
+      {%- endfor %}
+      <p class="contact-form__actions">
+        <button class="btn btn--primary" type="submit" disabled>{{ home.contact.submitLabel }}</button>
+        <a class="link-arrow" href="{{ site.bookingUrl or '/contact/' }}">Book a founder conversation</a>
+      </p>
+      {%- if showDraftMarks %}<p class="t-caption t-muted">Form connects in Phase 8 (Web3Forms).</p>{% endif %}
+    </form>
   </div>
 </section>

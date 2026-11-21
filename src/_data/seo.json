@@ -1,0 +1,28 @@
+{
+  "_readme": "Keyword map (docs/PLAN.md §3). One target phrase per URL. Single source of truth: page front matter does not set targetPhrase; src/_data/eleventyComputed.js reads it from here. Hypotheses until Search Console data exists.",
+  "pages": {
+    "/":                                       { "targetPhrase": "innovation partner for founders",                     "secondary": ["Therefore Tech"] },
+    "/transform/":                             { "targetPhrase": "operations transformation for founder-led companies", "secondary": ["remove operational bottlenecks"] },
+    "/discover/":                              { "targetPhrase": "new revenue streams for established companies",       "secondary": ["new products", "new markets"] },
+    "/how-we-work/":                           { "targetPhrase": "founder-led business transformation process",         "secondary": ["operations audit", "engagement models"] },
+    "/operational-resilience/":                { "targetPhrase": "operational resilience for startups and scale-ups",   "secondary": ["critical business operations", "business continuity"] },
+    "/work/":                                  { "targetPhrase": "AI transformation case studies",                      "secondary": [] },
+    "/work/financial-anomaly-detection/":      { "targetPhrase": "financial anomaly detection system",                  "secondary": [] },
+    "/work/automated-research-systems/":       { "targetPhrase": "automated research system",                           "secondary": ["evidence synthesis", "structured reports"] },
+    "/about/":                                 { "targetPhrase": "Parth Paliwal",                                       "secondary": ["founder of Therefore Tech"] },
+    "/insights/":                              { "targetPhrase": "business transformation insights for founders",       "secondary": [] },
+    "/insights/why-ai-solutions-go-stale/":    { "targetPhrase": "why AI solutions go stale",                           "secondary": ["adaptable AI systems"] },
+    "/insights/where-the-time-goes/":          { "targetPhrase": "how to find operational bottlenecks",                 "secondary": ["operations audit"] },
+    "/contact/":                               { "targetPhrase": "contact Therefore Tech",                              "secondary": ["book a founder conversation"] }
+  },
+  "roadmap": [
+    { "title": "What an operations audit actually looks at",                         "targetPhrase": "operations audit for founders",           "service": "/transform/" },
+    { "title": "A report or an outcome: what to ask before you bring in outside help", "targetPhrase": "alternative to management consultants",   "service": "/how-we-work/" },
+    { "title": "Finding new revenue in a business that already works",                "targetPhrase": "how to find new revenue streams",          "service": "/discover/" },
+    { "title": "Which operations can your business not afford to lose?",              "targetPhrase": "identify critical business operations",   "service": "/operational-resilience/" },
+    { "title": "Months, not years: scoping change that actually ships",               "targetPhrase": "business transformation timeline",        "service": "/how-we-work/" },
+    { "title": "Using AI in your operations without betting on one model",            "targetPhrase": "avoid AI vendor lock-in",                 "service": "/transform/" },
+    { "title": "Test the new product before you build the new product",               "targetPhrase": "validate a new product idea",             "service": "/discover/" },
+    { "title": "Single points of failure in a growing company",                       "targetPhrase": "single point of failure in business",     "service": "/operational-resilience/" }
+  ]
+}

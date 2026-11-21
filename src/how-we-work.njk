@@ -1,0 +1,33 @@
+---
+layout: layouts/page.njk
+copyStatus: draft
+title: "How we work with founders | Therefore Tech"
+description: "How Therefore Tech works: a founder conversation, a deep audit, a proposal with its expected impact, and implementation your way. Delivered in months."
+eyebrow: "How we work"
+h1: "How we work"
+intro: "Therefore Tech works one-on-one with founders. Four steps take you from the real problem to a working solution, in months, not years."
+schema: ["organization"]
+---
+<ol class="steps" role="list">
+{%- for step in home.howWeWork.steps %}
+  <li>
+    <h2 class="t-title-3"><span class="t-label t-muted">Step {{ loop.index }}</span><br>{{ step.title }}</h2>
+    <p>{{ step.body }}</p>
+  </li>
+{%- endfor %}
+</ol>
+
+<h2>We own the outcome</h2>
+<p>{{ home.transition1.text }}</p>
+
+<h2>{{ home.frontier.title }}</h2>
+<p>{{ home.frontier.text }}</p>
+
+<h2>{{ engagementModels.label }}</h2>
+{%- for m in engagementModels.models %}
+<h3>{{ m.name }}</h3>
+<p>{{ m.body }}</p>
+{%- endfor %}
+
+<p>Where to start: <a href="/transform/">transform what exists</a>, <a href="/discover/">discover what's next</a>, or protect what can't fail with <a href="/operational-resilience/">operational resilience</a>.</p>
+<p><a class="btn btn--primary" href="{{ site.bookingUrl or '/contact/' }}">Book a founder conversation</a></p>

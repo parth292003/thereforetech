@@ -1,0 +1,100 @@
+{
+  "_readme": "Claims register (docs/PLAN.md §9). Nothing factual ships unless it is here with status approved. npm run check:launch fails on any draft or missing claim that is still in the build.",
+  "claims": [
+    {
+      "id": "hero-sub",
+      "text": "We partner directly with ambitious founders…",
+      "where": [
+        "/"
+      ],
+      "source": "Brief",
+      "status": "approved"
+    },
+    {
+      "id": "stance",
+      "text": "Consultants hand you a report. We own the outcome with you.",
+      "where": [
+        "/",
+        "/transform/",
+        "/how-we-work/"
+      ],
+      "source": "Brief",
+      "status": "approved"
+    },
+    {
+      "id": "months-not-years",
+      "text": "Delivered in months, not years.",
+      "where": [
+        "/",
+        "/how-we-work/"
+      ],
+      "source": "Brief",
+      "status": "approved"
+    },
+    {
+      "id": "founder-exp",
+      "text": "Parth has worked alongside senior technology leaders at global companies.",
+      "where": [
+        "/",
+        "/about/"
+      ],
+      "source": "Parth, 2026-11-19",
+      "status": "approved",
+      "rule": "Never name any person or company."
+    },
+    {
+      "id": "op-resilience",
+      "text": "Operational resilience description",
+      "where": [
+        "/",
+        "/operational-resilience/"
+      ],
+      "source": "Brief",
+      "status": "approved",
+      "rule": "Capability, not a case study."
+    },
+    {
+      "id": "fin-anomaly",
+      "text": "Financial anomaly detection (founder experience)",
+      "where": [
+        "/",
+        "/work/financial-anomaly-detection/"
+      ],
+      "source": "Brief",
+      "status": "draft",
+      "rule": "Founder experience, not a Therefore Tech client. Held back until Parth confirms details.",
+      "heldBack": true
+    },
+    {
+      "id": "research-systems",
+      "text": "Automated research systems",
+      "where": [
+        "/",
+        "/work/automated-research-systems/"
+      ],
+      "source": "Brief",
+      "status": "draft",
+      "rule": "Held back until Parth confirms details.",
+      "heldBack": true
+    },
+    {
+      "id": "engagement",
+      "text": "Engagement models: Founder Opportunity Sprint, Build projects, Founder's Innovation Office",
+      "where": [
+        "/",
+        "/how-we-work/"
+      ],
+      "source": "Parth, 2026-11-19 (names only)",
+      "status": "draft",
+      "rule": "No durations, prices or outcomes until confirmed."
+    },
+    {
+      "id": "excluded",
+      "text": "Excluded engagement",
+      "where": [],
+      "source": "—",
+      "status": "excluded",
+      "rule": "NDA. Not described in this repo. Guarded by the NDA blocklist."
+    }
+  ]
+}

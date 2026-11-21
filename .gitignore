@@ -4,3 +4,6 @@ _site/
 .lighthouseci/
 # NDA blocklist: never committed (docs/PLAN.md §0). CI reads it from the NDA_BLOCKLIST secret.
 .nda-blocklist
+
+# Scene render frames (PNG sequences); masters live in media-masters/
+media-masters/renders/

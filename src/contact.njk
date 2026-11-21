@@ -1,0 +1,21 @@
+---
+layout: layouts/page.njk
+hideCta: true
+copyStatus: draft
+draftNote: "form goes live in Phase 8 (Web3Forms); booking link pending"
+title: "Contact Therefore Tech | Book a founder conversation"
+description: "Book a founder conversation with Therefore Tech. Tell us the problem in one line and we will come back to you."
+eyebrow: "Contact"
+h1: "Have something ambitious in mind? Let's talk."
+intro: "Tell us the problem in one line. We'll come back to you to set up a founder conversation."
+---
+<form class="contact-form" action="#" method="post">
+  {%- for f in home.contact.fields %}
+  <p>
+    <label for="f-{{ f.name }}">{{ f.label }}</label><br>
+    <input id="f-{{ f.name }}" name="{{ f.name }}" type="{{ f.type }}" autocomplete="{{ f.autocomplete }}"{% if f.required %} required{% endif %}>
+  </p>
+  {%- endfor %}
+  <p><button class="btn btn--primary" type="submit" disabled>{{ home.contact.submitLabel }}</button></p>
+  <p class="t-small t-muted">The form is not connected yet (Phase 8).</p>
+</form>

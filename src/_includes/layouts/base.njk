@@ -4,18 +4,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+{#- Launch lock (site.lockInnerPages): only the homepage and the 404 page are open; every other page shows "Coming soon". -#}
+{%- set locked = site.lockInnerPages and page.url != "/" and page.url != "/404.html" and page.url %}
 {% include "partials/seo-head.njk" %}
-<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+{%- if locked %}
+<meta name="robots" content="noindex">
+{%- endif %}
 <link rel="preload" href="/assets/fonts/roboto-condensed.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+{%- for p in preloads or [] %}
+<link rel="preload" href="{{ p.href }}" as="{{ p.as }}"{% if p.type %} type="{{ p.type }}"{% endif %}{% if p.media %} media="{{ p.media }}"{% endif %} fetchpriority="high">
+{%- endfor %}
 <style>{% inlineCss "tokens.css", "base.css", "layout.css" %}{% if pageCss %}{% inlineCss pageCss %}{% endif %}</style>
 </head>
-<body>
+<body class="{{ bodyClass or '' }}">
 <a class="skip-link" href="#main">Skip to content</a>
 {% include "partials/header.njk" %}
 <main id="main" tabindex="-1">
+{%- if locked %}
+<article class="page page--soon">
+  <header class="container grid page__header">
+    {%- if h1 or title %}<p class="page__eyebrow t-label">{{ h1 or title }}</p>{% endif %}
+    <h1 class="page__title">Coming soon</h1>
+    <p class="page__intro t-lead"><a class="link-arrow" href="/">Back to the homepage</a></p>
+  </header>
+</article>
+{%- else %}
 {{ content | safe }}
+{%- endif %}
 </main>
 {% include "partials/footer.njk" %}
-<script src="/assets/js/nav.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+{%- for s in (pageScripts if not locked else []) or [] %}
+<script src="/assets/js/{{ s }}" defer></script>
+{%- endfor %}
 </body>
 </html>

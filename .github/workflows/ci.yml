@@ -27,3 +27,5 @@ jobs:
         env:
           NDA_BLOCKLIST: ${{ secrets.NDA_BLOCKLIST }}
       - run: npm run lint:html
+      - name: Approved copy unchanged
+        run: npm run check:copy

@@ -7,11 +7,9 @@
 .swatch--bg { background: var(--color-bg); }
 .swatch--ink { background: var(--color-ink); }
 .swatch--muted { background: var(--color-ink-muted); }
-.swatch--accent { background: var(--color-accent); }
-.swatch--accent-text { background: var(--color-accent-text); }
-.swatch--rose { background: var(--color-rose); }
-.swatch--sage { background: var(--color-sage); }
-.specimen-grid span { display: block; height: var(--space-9); background: var(--color-rose); }
+.swatch--line { background: var(--color-line-soft); }
+.swatch--wash { background: var(--color-wash); }
+.specimen-grid span { display: block; height: var(--space-9); background: var(--color-wash); outline: var(--rule-width) solid var(--color-line-soft); }
 .specimen-grid span:nth-child(n + 5) { display: none; }
 @media (min-width: 768px) { .specimen-grid span:nth-child(n + 5) { display: block; } .specimen-grid span:nth-child(n + 9) { display: none; } }
 @media (min-width: 1280px) { .specimen-grid span:nth-child(n + 9) { display: block; } }

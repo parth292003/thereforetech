@@ -1,0 +1,157 @@
+{
+  "_readme": "Homepage copy, section by section (docs/PLAN.md §4). status: approved = brief or Parth's words, checked verbatim by scripts/check-copy.js. status: draft = written for review; blocks launch until approved (npm run check:launch).",
+  "hero": {
+    "status": "approved",
+    "h1": "We rethink how your business works, and build what comes next.",
+    "h1Lines": [
+      "We rethink how",
+      "your business works,",
+      "and build what",
+      "comes next."
+    ],
+    "sub": "We partner directly with ambitious founders to transform operations, discover new opportunities, and engineer the solutions that bring them to life.",
+    "ctaPrimary": {
+      "label": "Book a founder conversation",
+      "url": "/contact/"
+    },
+    "ctaSecondary": {
+      "label": "See our work",
+      "url": "/work/"
+    }
+  },
+  "transition1": {
+    "status": "approved",
+    "heading": "We're not consultants. We're builders.",
+    "text": "Consultants hand you a report. We own the outcome with you."
+  },
+  "whatWeDo": {
+    "status": "approved",
+    "label": "What we do",
+    "panels": [
+      {
+        "title": "Transform what exists",
+        "body": "Fix how the business runs today. We remove the bottlenecks and engineer the systems that keep it moving.",
+        "url": "/transform/",
+        "linkLabel": "How we transform"
+      },
+      {
+        "title": "Discover what's next",
+        "body": "Find the next product, market or revenue stream. Then we build it and bring it to life.",
+        "url": "/discover/",
+        "linkLabel": "How we discover"
+      }
+    ]
+  },
+  "philosophy": {
+    "status": "approved",
+    "text": "A company's future should not be limited by the way it operates today."
+  },
+  "howWeWork": {
+    "status": "approved",
+    "label": "How we work",
+    "steps": [
+      {
+        "title": "Founder conversation",
+        "body": "You tell us the real problems."
+      },
+      {
+        "title": "Deep audit",
+        "body": "We go inside the business and study operations, numbers, spend and where the effort goes."
+      },
+      {
+        "title": "Proposal with impact",
+        "body": "A specific solution and its expected impact."
+      },
+      {
+        "title": "Implement, your way",
+        "body": "We build it, build it with your team, or guide your team through it."
+      }
+    ],
+    "url": "/how-we-work/"
+  },
+  "frontier": {
+    "status": "approved",
+    "title": "Built for a moving frontier",
+    "text": "AI changes every few months. Our solutions are designed to adapt with it. Delivered in months, not years."
+  },
+  "work": {
+    "label": "Selected work",
+    "items": [
+      {
+        "status": "approved",
+        "kind": "Founder experience",
+        "title": "Senior technology leadership",
+        "body": "Parth has worked alongside senior technology leaders at global companies.",
+        "url": "/about/",
+        "titleStatus": "draft"
+      },
+      {
+        "status": "approved",
+        "kind": "Capability",
+        "title": "Operational resilience",
+        "body": "Every business has operations it can't afford to lose. We find where they're fragile, strengthen them, and keep them running when things go wrong.",
+        "url": "/operational-resilience/"
+      },
+      {
+        "status": "draft",
+        "kind": "Founder experience",
+        "title": "Financial anomaly detection",
+        "body": "Founder experience in spotting unusual patterns in financial data before they become problems.",
+        "url": "/work/financial-anomaly-detection/",
+        "heldBackUntilConfirmed": true
+      },
+      {
+        "status": "draft",
+        "kind": "Work",
+        "title": "Automated research systems",
+        "body": "Systems that gather evidence, synthesise it, check its quality and deliver structured reports.",
+        "url": "/work/automated-research-systems/",
+        "heldBackUntilConfirmed": true
+      }
+    ]
+  },
+  "founderNote": {
+    "status": "missing",
+    "launchBlocker": true,
+    "text": null,
+    "signature": "Parth Paliwal, founder"
+  },
+  "contact": {
+    "status": "approved",
+    "title": "Have something ambitious in mind? Let's talk.",
+    "fields": [
+      {
+        "name": "name",
+        "label": "Name",
+        "type": "text",
+        "autocomplete": "name",
+        "required": true
+      },
+      {
+        "name": "company",
+        "label": "Company",
+        "type": "text",
+        "autocomplete": "organization",
+        "required": true
+      },
+      {
+        "name": "email",
+        "label": "Email",
+        "type": "email",
+        "autocomplete": "email",
+        "required": true,
+        "status": "draft",
+        "note": "Not in the brief; added so we can reply. Needs Parth's OK."
+      },
+      {
+        "name": "problem",
+        "label": "The problem, in one line",
+        "type": "text",
+        "autocomplete": "off",
+        "required": true
+      }
+    ],
+    "submitLabel": "Start the conversation",
+    "submitLabelStatus": "draft"
+  }
+}

@@ -1,0 +1,18 @@
+---
+layout: layouts/page.njk
+copyStatus: draft
+title: "Selected work and founder experience | Therefore Tech"
+description: "Selected work and founder experience from Therefore Tech: what we have built, and the experience behind it."
+eyebrow: "Selected work"
+h1: "Selected work"
+intro: "What we have built, and the experience behind it. We only publish work we can describe honestly."
+---
+{%- for item in home.work.items %}
+{%- set isLive = not item.heldBackUntilConfirmed or showDraftMarks %}
+{%- if isLive %}
+<h2>{{ item.title }}</h2>
+<p class="t-label t-muted">{{ item.kind }}{% if item.status == "draft" and showDraftMarks %} · draft{% endif %}</p>
+<p>{{ item.body }}</p>
+<p><a href="{{ item.url }}">Read more<span class="visually-hidden"> about {{ item.title }}</span></a></p>
+{%- endif %}
+{%- endfor %}

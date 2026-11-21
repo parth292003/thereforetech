@@ -4,11 +4,13 @@
   "locale": "en_GB",
   "lang": "en",
   "description": "Therefore Tech is the innovation arm for founders. We transform how your business works and build what comes next.",
+  "descriptionStatus": "draft",
   "founder": "Parth Paliwal",
   "linkedin": null,
   "founderLinkedin": null,
   "email": null,
   "bookingUrl": null,
+  "lockInnerPages": true,
   "ogImageDefault": "/media/og/default.jpg",
-  "themeColor": "#F3EEE4"
+  "themeColor": "#FFFFFF"
 }

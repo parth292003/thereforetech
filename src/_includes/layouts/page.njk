@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+---
+{%- if copyStatus == "draft" and showDraftMarks %}
+<p class="draft-banner t-label" role="note">Draft copy, for review before launch{% if draftNote %}: {{ draftNote }}{% endif %}</p>
+{%- endif %}
+<article class="page">
+  <header class="container grid page__header">
+    {%- if eyebrow and eyebrow != h1 %}<p class="page__eyebrow t-label">{{ eyebrow }}</p>{% endif %}
+    <h1 class="page__title" data-reveal="mask">{{ h1 }}</h1>
+    {%- if intro %}<p class="page__intro t-lead" data-reveal>{{ intro }}</p>{% endif %}
+  </header>
+  {{ content | sectionize | safe }}
+  {%- if not hideCta %}
+  <hr class="rule">
+  <section class="container grid page__cta" aria-label="Contact">
+    <p class="t-title-1" data-reveal="mask">{{ home.contact.title }}</p>
+    <p><a class="btn btn--primary" href="{{ site.bookingUrl or '/contact/' }}">Book a founder conversation</a></p>
+  </section>
+  {%- endif %}
+</article>

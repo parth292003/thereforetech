@@ -97,7 +97,7 @@ One target phrase per page. These are **hypotheses** built from the audience and
 
 | URL | H1 (working) | Target phrase | Secondary intent | Schema |
 |---|---|---|---|---|
-| `/` | We rethink how your business works. And build what comes next. | innovation partner for founders | brand: "Therefore Tech" | Organization, WebSite |
+| `/` | We rethink how your business works, and build what comes next. | innovation partner for founders | brand: "Therefore Tech" | Organization, WebSite |
 | `/transform` | Transform what exists | operations transformation for founder-led companies | remove operational bottlenecks | Service, Breadcrumb |
 | `/discover` | Discover what's next | new revenue streams for established companies | new products, new markets | Service, Breadcrumb |
 | `/how-we-work` | How we work | founder-led business transformation process | audit → proposal → implement; engagement models | Breadcrumb (+ HowTo-style content, not HowTo markup) |
@@ -173,8 +173,8 @@ Source: `dickwu/apple-design-skill` (read 2026-11-19: `SKILL.md`, `cross-platfor
 | Typefaces | `typography.md`: minimise typefaces; `branding.md`: custom font for headlines works well | Exactly two families (Q2). |
 | Text scaling | `accessibility.md`: allow enlargement to at least 200% | All type in `rem`; layouts tested at 200% browser text size; columns stack instead of truncating. |
 | Contrast | `accessibility.md`: 4.5:1 up to 17 pt, 3:1 at 18 pt+ or bold | Every token pair has a computed ratio (§4A.2). |
-| Colour meaning | `color.md`: one colour, one meaning; never colour alone | Ochre = action and focus only. Links also underlined. |
-| Accent restraint | `branding.md`: apply accent judiciously; branding defers to content; don't repeat the logo | Ochre appears on CTAs, focus and the hero line only. Wordmark once, in the header. |
+| Colour meaning | `color.md`: one colour, one meaning; never colour alone | Monochrome: black means ink and action; there is no accent colour. Links are underlined, buttons are filled or outlined, so nothing relies on colour. |
+| Accent restraint | `branding.md`: apply accent judiciously; branding defers to content; don't repeat the logo | No accent colour at all (revised 2026-11-19); colour lives in the footage, the content layer. Wordmark once, in the header. |
 | Targets | `accessibility.md`: 44×44 pt default, 28×28 minimum; ~12 pt padding around bezelled elements, ~24 pt around unbezelled | All interactive targets ≥ 44×44 px. Buttons ≥ 12 px clear space; text links ≥ 24 px from neighbouring targets on touch. |
 | Layout | `layout.md › Size classes`: lay out by available space, not device or orientation; same functionality at every size; respect safe areas | Width-based breakpoints and container queries (§4A.4); `env(safe-area-inset-*)` on fixed elements; no feature hidden on mobile. |
 | Motion | `motion.md`: purposeful, brief, cancellable, rare on frequent interactions | One signature moment (hero line). Content never waits for an animation. Hover/focus feedback ≤ 160 ms. |
@@ -183,38 +183,39 @@ Source: `dickwu/apple-design-skill` (read 2026-11-19: `SKILL.md`, `cross-platfor
 | Writing | `writing.md`: labels say what happens; consistent capitalisation | Sentence case everywhere except Roboto Condensed labels (uppercase by style, real text stays sentence case in HTML). CTA labels name the action. |
 
 **Not adopted, with reasons:**
-- **Dark appearance** (`dark-mode.md` asks for both appearances). Palette A is a light palette chosen by Parth. Launch is light-only; a dark variant is a later decision (open item O6).
+- **Dark appearance** (`dark-mode.md` asks for both appearances). The white "Ink" palette is a light palette chosen by Parth. Launch is light-only; a dark variant is a later decision (open item O6).
 - **System fonts for body** (`branding.md` suggests them). Q2 chose Newsreader for long-form text; brand wins.
 - **Liquid Glass / blur materials.** Native-platform material; off-brand and costly on the web.
 - **No spacing scale or timing values exist in the skill.** The HIG pages read give principles, not numbers, for spacing and motion duration. The spacing scale (§4A.3) and duration tokens (§4A.5) are **my judgment**, built on the skill's principles and the current page's timings.
 
-**Craft-lens check (from the skill):** the skill warns that "warm cream with a high-contrast serif and a terracotta accent" is a templated look. Palette A plus Newsreader sits near it. Mitigations, so the choice reads as ours rather than a default: the accent is ochre sampled from the hero footage (not terracotta); Roboto Condensed labels and drawn rules carry over from the existing Therefore Tech page; the signature element is the untangling line over real footage; Newsreader is used at regular weight, not high-contrast display cuts.
+**Craft-lens check (from the skill), revised:** the move to white, black condensed type and thin rules sits near another look the skill calls templated ("a broadsheet of hairline rules, zero radius, and dense columns"). What keeps it ours: it is the existing Therefore Tech identity (the coming-soon page), not a default; the layout is generous, not dense; the colour comes from real footage of a living field; and the signature element is the untangling line, which turns the brand's drawn rules into the "technology evolving into nature" theme.
 
-### 4A.2 Colour: Palette A "Field"
+### 4A.2 Colour: "Ink" (monochrome, from 2026-11-19 design review)
 
-| Token | Hex | Role | Contrast on bone `#F3EEE4` |
+Parth replaced Palette A with pure white and black ink, matching the original coming-soon page: no beige, no gold anywhere. Colour on the site now comes only from the footage.
+
+| Token | Hex | Role | Contrast on white |
 |---|---|---|---|
-| `--color-bg` | `#F3EEE4` bone | Page surface | — |
-| `--color-ink` | `#1C1A16` soil | Text, rules | 15.03:1 |
-| `--color-ink-muted` | `#5C574D` | Secondary text | 6.21:1 |
-| `--color-accent` | `#B08A3E` ochre | **Fills only** (CTA background, hero line, focus ring). Not for text on bone (2.77:1). | ink on ochre 5.42:1 |
-| `--color-accent-text` | `#7A5C22` deep ochre | Links and accent text on bone | 5.37:1 |
-| `--color-rose` | `#E8CFC4` dusk rose | Quiet surfaces (founder note, form panel) | ink on rose 11.71:1 |
-| `--color-sage` | `#7E8468` | Decorative lines and illustration only | 3.37:1 (non-text, ≥ 3:1 OK) |
-| `--color-sage-text` | `#5A604A` | Sage used as text, if ever needed | 5.66:1 |
+| `--color-bg` | `#FFFFFF` | Page surface | — |
+| `--color-ink` | `#111111` | Text, rules, buttons, focus | 18.88:1 |
+| `--color-ink-muted` | `#5A5A5A` | Secondary text | 6.90:1 |
+| `--color-line-soft` | `#D9D9D9` | Hairlines between minor items only (decorative) | 1.41:1 (non-text) |
+| `--color-wash` | `#F2F2F2` | Quiet surfaces (draft banner, placeholders) | ink on wash 16.9:1 |
 
-Text over video uses `--color-ink` or bone on a scrim tuned per scene; each pairing is measured on the poster frame before sign-off.
+Rules are 1 px black (`--color-ink` at 80%), as on the coming-soon page. Buttons: black fill with white text (primary), or a black outline (secondary). Focus ring: 2 px black outline with a 2 px white gap, visible on white and over footage.
+
+Text over the hero footage: black ink over a white scrim. Measured on the poster frame, the darkest 5% of the H1 area is luminance value 98–110 of 255, which gives black text only ~3.3–3.7:1. Fine for the display H1 (≥ 3:1 large text) but not for the subheading, so a white gradient scrim sits behind the text block (§4A.6).
 
 ### 4A.3 Typography and spacing
 
-Families: **Roboto Condensed** (wordmark, nav, labels, buttons; uppercase, tracking +0.06–0.08em) and **Newsreader** (headlines, body, long-form). Self-hosted WOFF2, Latin subset, `font-display: swap`, two preloads max.
+Families (revised 2026-11-19): **Roboto Condensed, uppercase, is the dominant brand voice**: wordmark, nav, labels, buttons, H1s and section titles, at weights 600–900 like the coming-soon page. **Newsreader is supporting only**: body copy, leads, long-form text and pull-quotes. Self-hosted WOFF2, Latin subset, `font-display: swap`, two preloads max.
 
 | Token | Compact (< 768 px) | Regular / wide (fluid up to) | Family / leading |
 |---|---|---|---|
-| `--text-display` (hero H1) | 2.5rem (40) | 5.5rem (88) | Newsreader 400 / 1.05 |
-| `--text-title-1` | 2.125rem (34) | 3.5rem (56) | Newsreader 400 / 1.1 |
-| `--text-title-2` | 1.75rem (28) | 2.5rem (40) | Newsreader 400 / 1.15 |
-| `--text-title-3` | 1.375rem (22) | 1.75rem (28) | Newsreader 500 / 1.25 |
+| `--text-display` (hero H1) | 2.5rem (40) | 6.5rem (104) | Roboto Condensed 800, uppercase / 0.95 |
+| `--text-title-1` | 2.125rem (34) | 4rem (64) | Roboto Condensed 800, uppercase / 0.98 |
+| `--text-title-2` | 1.75rem (28) | 2.75rem (44) | Roboto Condensed 700, uppercase / 1.02 |
+| `--text-title-3` | 1.375rem (22) | 1.75rem (28) | Roboto Condensed 700, uppercase / 1.1 |
 | `--text-lead` | 1.25rem (20) | 1.5rem (24) | Newsreader 400 / 1.45 |
 | `--text-body` | 1.0625rem (17) | 1.1875rem (19) | Newsreader 400 / 1.55 |
 | `--text-small` | 0.9375rem (15) | 1rem (16) | Newsreader 400 / 1.5 |
@@ -234,6 +235,10 @@ Spacing scale (4 px base, judgment): `--space-1` 4, `--space-2` 8, `--space-3` 1
 | Wide | ≥ 1280 px | 12 | 32 px |
 
 Max content width 1440 px; full-bleed media ignores it. Components respond to their container (`@container`) where possible, so the same panel works in a 4-column or 12-column context.
+
+### 4A.6 Hero over footage (added 2026-11-19)
+
+Full-bleed field video (`src/media/hero/`), poster first, video attached after page load. White scrim: a gradient from the text side (≈ 70% white behind the subheading, fading to clear). Contrast is verified on the poster frame with the scrim applied, not estimated. Pause/play control bottom-right.
 
 ### 4A.5 Motion tokens (judgment, guided by `motion.md`)
 
@@ -295,7 +300,9 @@ A single SVG path, stroke-dashoffset animation, tangled → calm, `--dur-signatu
 | Transition 2 | scrub | 4–6 s, 24 fps | same | same | same | same |
 | Moving frontier | play/loop | 6–10 s, seamless loop | same | same | WebM + MP4 | desktop ≤ 2.0 MB, mobile ≤ 1.0 MB |
 
-Every clip: no audio track, no flashing (≤ 3 flashes per second), first and last frames that sit cleanly on bone `#F3EEE4` (so scenes enter and leave without a hard edge), key action inside a centred safe area that survives a 4:5 crop, and a poster frame (AVIF ≤ 80 KB + JPEG fallback). Masters as ProRes 422 or high-bitrate H.264; `scripts/encode-video.sh` produces every rendition.
+Every clip: no audio track, no flashing (≤ 3 flashes per second), first and last frames that resolve to **pure white `#FFFFFF`** and frame edges that fade to white (so scenes melt into the page), no text in the render, a clear empty zone where the headline sits, key action inside a safe area, and a poster frame (AVIF ≤ 80 KB + JPEG + WebP). Masters as high-bitrate H.264 (CRF 12); `scripts/encode-video.sh` produces every rendition, with a separate 4:5 mobile master.
+
+**Production (revised 2026-11-20):** scenes are rendered offline with Three.js in headless Chrome (`scripts/render/`, Parth chose this over installing Blender): accumulated samples per frame for depth of field, soft shadows and anti-aliasing; natural materials (paper, copper, bark, leaf); light grain added in the composite. Fable clips can replace any scene later through the same `encode-video.sh` pipeline.
 
 ---
 
@@ -328,7 +335,7 @@ Every clip: no audio track, no flashing (≤ 3 flashes per second), first and la
 | Contrast | WCAG 2.2 AA everywhere, including text over video (scrim tuned per scene) |
 | Text size | Usable at 200% browser text size without loss of content |
 | Targets | ≥ 44×44 px for every interactive element |
-| Keyboard | Visible focus (ochre ring, ≥ 3:1 against both bone and ink), skip link, full keyboard operation |
+| Keyboard | Visible focus (2 px black ring with white gap, visible on white and over footage), skip link, full keyboard operation |
 | Motion | `prefers-reduced-motion` → posters, no pinning, no autoplay; pause control on every looping video |
 
 Hero video loads only after first paint (`preload="none"` then attached on `load`), so it never competes with LCP.
@@ -393,8 +400,8 @@ No number, client name, logo or outcome appears on the site unless it is in this
 
 | # | Decision |
 |---|---|
-| Q1 | Palette A, "Field" (§4A.2). |
-| Q2 | Roboto Condensed for wordmark, nav and labels; Newsreader for headlines and long-form text. |
+| Q1 | Palette A, "Field" (§4A.2). **Superseded 2026-11-19:** pure white, black ink and thin black rules; no gold anywhere. |
+| Q2 | Roboto Condensed for wordmark, nav and labels; Newsreader for headlines and long-form text. **Revised 2026-11-19:** Roboto Condensed uppercase is dominant (nav, labels, buttons, H1s, section titles); Newsreader only for body and long text. |
 | Q3 | "Owned by Parth Paliwal" dropped. |
 | Q4 | Web3Forms for the form, Cal.com for booking. Parth will supply the email address and link. |
 | Q5 | Cloudflare Web Analytics. |
@@ -402,7 +409,21 @@ No number, client name, logo or outcome appears on the site unless it is in this
 | Q7, Q8, Q10 | Parth supplies bio, LinkedIn, founder note and wordmark before Phase 6. |
 | Q9 | Second seed article approved. |
 
+### Design review, 2026-11-19
+
+Parth's changes after seeing Phase 1–2: white background; no gold; black ink and thin black rules; Roboto Condensed uppercase dominant; hero field video back, full-bleed; motion added now (hero line, scroll reveals, moving ScrollScene placeholders); full-grid editorial layout instead of left-aligned text; no duplicated label above the H1. **Sequencing change:** homepage layout (Phase 3), hero renditions (part of Phase 4) and the motion system (Phase 5) are pulled forward and reviewed on the homepage and Discover before the other inner pages are reworked.
+
 ### Open
+
+**Homepage review, 2026-11-20:** Parth selected the Connected promise typography study and explicitly asked
+to apply it. The hero headline is now one sentence (comma and lowercase "and"), with deliberate line
+breaks. The unchanged founder paragraph is larger, with "ambitious founders" emphasized. The existing
+untangling animation moves from above the headline to beneath the header wordmark and navigation,
+replacing that static rule. The hero video keeps looping; its visible pause/play control is removed at
+Parth's explicit request. Reduced-motion and Save-Data visitors still receive the poster. The absence of
+an on-page pause control remains an accessibility deviation. Scene palette and other copy are unchanged.
+Parth also preferred the macro still-life scene study; this selection does not mean that its full video
+has been rendered or integrated.
 
 | # | Item | Needed by |
 |---|---|---|
@@ -413,6 +434,8 @@ No number, client name, logo or outcome appears on the site unless it is in this
 | O5 | Engagement model descriptions (scope, who it's for, how it runs) | Launch, or the section is held back |
 | O6 | Dark appearance: light-only for launch; revisit after launch? | Post-launch |
 | O7 | Approval of the 8 post-launch article topics (§3.1) | Phase 12 |
+| O8 | Contact form: add an **Email** field? The brief lists name, company and the problem only, which leaves no way to reply. Added as DRAFT. | Phase 8 |
+| O9 | Approval of all DRAFT copy: inner pages, "What we do" panel lines, engagement model descriptions, work card title "Senior technology leadership", form button "Start the conversation", site description. `npm run check:launch` lists every item. | Launch |
 
 ---
 

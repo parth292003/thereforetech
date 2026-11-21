@@ -1,0 +1,25 @@
+{
+  "_readme": "Engagement models (PLAN §4 row 8). Names are Parth's (2026-11-19). Descriptions are DRAFT guesses at intent: no durations, prices or outcomes until Parth confirms.",
+  "status": "draft",
+  "label": "Ways to work with us",
+  "models": [
+    {
+      "name": "Founder Opportunity Sprint",
+      "nameStatus": "approved",
+      "body": "A focused first piece of work to find where the biggest opportunity sits, and what it would take to act on it.",
+      "status": "draft"
+    },
+    {
+      "name": "Build projects",
+      "nameStatus": "approved",
+      "body": "A defined solution, built for your team, with your team, or by your team with our guidance.",
+      "status": "draft"
+    },
+    {
+      "name": "Founder's Innovation Office",
+      "nameStatus": "approved",
+      "body": "An ongoing partnership that works directly with the founder on what to transform and what to build next.",
+      "status": "draft"
+    }
+  ]
+}
