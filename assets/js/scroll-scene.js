@@ -203,7 +203,8 @@
     const fold = scene.hasAttribute("data-fold") ? { next: scene.nextElementSibling, text: stage.querySelector(".scene__text"), bar: stage.querySelector(".scene__progress") } : null;
     const layoutFold = () => {
       if (!fold || !fold.next) return;
-      const ih = innerHeight;
+      const ih = stage.clientHeight;                                       // 100svh: steady while a phone's address bar slides
+      fold.w = innerWidth;
       fold.text.style.transform = ""; scene.style.height = "";
       const tr = fold.text.getBoundingClientRect(), sr = stage.getBoundingClientRect();
       fold.top = Math.max(ih * 0.1, 72);                                    // where the heading comes to rest
@@ -219,7 +220,7 @@
     scene.foldInfo = fold;                             // read by review captures
     const measure = () => {
       const rect = scene.getBoundingClientRect();
-      const total = scene.offsetHeight - innerHeight;
+      const total = scene.offsetHeight - (fold ? stage.clientHeight : innerHeight);   // the pin ends when the stage meets the scene's end
       target = total > 0 ? clamp(-rect.top / total) : 1;
     };
     const tick = () => {
@@ -245,7 +246,9 @@
       if (active) { addEventListener("scroll", onScroll, { passive: true }); onScroll(); }
       else removeEventListener("scroll", onScroll);
     }, { rootMargin: "20% 0px" }).observe(scene);
-    addEventListener("resize", () => { layoutFold(); onScroll(); }, { passive: true });
+    // A phone's address bar changes only the height as you scroll: re-lay the fold only when the width changes,
+    // otherwise the page would jump mid-scroll.
+    addEventListener("resize", () => { if (fold && fold.w !== innerWidth) layoutFold(); onScroll(); }, { passive: true });
     document.fonts && document.fonts.ready.then(() => { layoutFold(); onScroll(); });
     render(0);
   });
